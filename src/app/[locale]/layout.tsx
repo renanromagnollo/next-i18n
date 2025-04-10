@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
+import LanguageSwitcher from "../_components/LanguageSwitcher";
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'pt' }]
@@ -19,6 +20,7 @@ export default function LocaleLayout({ children, params: { locale } }: { childre
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <LanguageSwitcher />
       {children}
     </NextIntlClientProvider>
   )
