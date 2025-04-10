@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
   i18n: {
     locales: ["en", "pt"],
     defaultLocale: "pt",
-  }
+  },
+  reactStrictMode: true
 };
 
 export default nextConfig;

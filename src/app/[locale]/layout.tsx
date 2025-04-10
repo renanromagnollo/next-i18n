@@ -4,15 +4,14 @@ import { ReactNode } from "react";
 import LanguageSwitcher from "../_components/LanguageSwitcher";
 
 export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'pt' }]
+  return [{ locale: 'en' }, { locale: 'pt' }];
 }
 
-export default function LocaleLayout({ children, params: { locale } }: { children: ReactNode; params: { locale: string } }) {
+export default async function LocaleLayout({ children, params: { locale } }: { children: ReactNode; params: { locale: string } }) {
   let messages
 
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    messages = require(`../../locales/${locale}.json`)
+    messages = (await import(`../../locales/${locale}.json`)).default
   } catch (error) {
     console.error("Erro ao carregar tradução.", error)
     notFound()

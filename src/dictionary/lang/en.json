@@ -1,0 +1,9 @@
+{
+  "home": {
+    "title": "Welcome",
+    "description": "This is a sample internationalized Next.js project."
+  },
+  "about": {
+    "title": "About us"
+  }
+}
