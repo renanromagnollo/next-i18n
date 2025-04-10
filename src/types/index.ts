@@ -1,0 +1,1 @@
+export { type Locale, SupportedLocale, locales, i18n } from './locale';
