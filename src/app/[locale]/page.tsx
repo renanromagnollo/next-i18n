@@ -1,15 +1,14 @@
-import { useTranslations } from "next-intl"
-import Link from "next/link"
+'use client'
+
+import { useTranslation } from '@/context/translation-context'
 
 export default function HomePage() {
-
-  const translate = useTranslations()
+  const t = useTranslation()
 
   return (
-    <div>
-      <h1>{translate('home.title')}</h1>
-      <p>{translate('home.description')}</p>
-      <Link href='/about'>About</Link>
-    </div>
+    <main>
+      <h1>{t.home.title}</h1>
+      <p>{t.home.description}</p>
+    </main>
   )
 }

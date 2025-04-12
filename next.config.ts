@@ -1,12 +1,11 @@
-import type { NextConfig } from "next";
+// next.config.js
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  i18n: {
-    locales: ["en", "pt"],
-    defaultLocale: "pt",
-  },
-  reactStrictMode: true
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // i18n aqui é ignorado no App Router
+  experimental: {
+    serverActions: true
+  }
+}
 
-export default nextConfig;
+module.exports = nextConfig
