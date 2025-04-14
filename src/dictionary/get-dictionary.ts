@@ -3,9 +3,9 @@ import { Dictionary, Locale, SupportedLocale } from '@/types'
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
   [SupportedLocale.EN_US]: () =>
-    import('@/dictionary/lang/en-us.json').then((m) => m.default),
+    import('@/dictionary/lang/en-us.json').then((m) => m.default as Dictionary),
   [SupportedLocale.PT_BR]: () =>
-    import('@/dictionary/lang/pt-br.json').then((m) => m.default),
+    import('@/dictionary/lang/pt-br.json').then((m) => m.default as Dictionary),
 }
 
 export async function getDictionary(locale: Locale): Promise<Dictionary> {

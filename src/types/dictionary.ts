@@ -1,3 +1,4 @@
 export type Dictionary = {
-  home: { title: string; description: string }
+  home: { title: string; description: string },
+  about: { title: string; description: string }
 }

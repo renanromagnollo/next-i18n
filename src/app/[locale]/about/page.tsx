@@ -1,13 +1,14 @@
-// src/app/[locale]/about/page.tsx
-import { useTranslations } from 'next-intl';
+'use-client'
+
+import { useTranslation } from '@/context/translation-context'
 
 export default function AboutPage() {
-  const t = useTranslations();
+  const t = useTranslation();
 
   return (
     <div>
-      <h1>{t('about.title')}</h1>
-      <p>{t('home.description')}</p>
+      <h1>{t.about.title}</h1>
+      <p>{t.about.description}</p>
     </div>
   );
 }

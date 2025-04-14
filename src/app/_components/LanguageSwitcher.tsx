@@ -13,8 +13,8 @@ export default function LanguageSwitcher() {
 
   return (
     <div>
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('pt')}>Português</button>
+      <button onClick={() => changeLanguage('en-us')}>English</button>
+      <button onClick={() => changeLanguage('pt-br')}>Português</button>
     </div>
   )
 }

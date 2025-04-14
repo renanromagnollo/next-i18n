@@ -22,7 +22,9 @@ export default async function LocaleLayout({
   const dictionary = await getDictionary(params.locale)
 
   // Caso a localidade não seja suportada, mostra erro 404
-  if (!i18n.locales.includes(params.locale)) notFound()
+  if (!i18n.locales.includes(params.locale)) {
+    notFound()
+  }
 
   return (
     <TranslationProvider dictionary={dictionary}>
