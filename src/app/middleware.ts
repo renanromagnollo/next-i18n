@@ -1,5 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { i18n } from '@/types'
+import { i18n, SupportedLocale } from '@/types'
+
+function getLocaleFromHeader(request: NextRequest): SupportedLocale {
+  const acceptLanguage = request.headers.get('accept-language')
+
+  if (!acceptLanguage) {
+    return i18n.defaultLocale
+  }
+
+  const supportedLocales = i18n.locales
+  const preferredLocales = acceptLanguage.split(',').map((lang) => lang.split(';')[0].trim().toLowerCase())
+
+  const matched = preferredLocales.find((locale) => supportedLocales.includes(locale as SupportedLocale))
+
+  return (matched || i18n.defaultLocale) as SupportedLocale
+}
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -9,5 +24,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  return NextResponse.redirect(new URL(`/${i18n.defaultLocale}${pathname}`, request.url))
+  const detectedLocaleInBrowser = getLocaleFromHeader(request)
+
+  return NextResponse.redirect(new URL(`/${detectedLocaleInBrowser}${pathname}`, request.url))
 }
