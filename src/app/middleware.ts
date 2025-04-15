@@ -1,14 +1,13 @@
-import { i18n } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
+import { i18n } from '@/types'
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Se já está com idioma na URL, deixa passar
-  if (i18n.locales.some((locale) => pathname.startsWith(`/${locale}`))) {
+  const isLanguageInUrl = i18n.locales.some((locale) => pathname.startsWith(`/${locale}`))
+  if (isLanguageInUrl) {
     return NextResponse.next()
   }
 
-  // Redireciona para o idioma padrão
   return NextResponse.redirect(new URL(`/${i18n.defaultLocale}${pathname}`, request.url))
 }
