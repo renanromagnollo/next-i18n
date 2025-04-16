@@ -1,11 +1,9 @@
-// next.config.js
+import type { NextConfig } from 'next'
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // i18n aqui é ignorado no App Router
+const nextConfig: NextConfig = {
   experimental: {
-    serverActions: true
-  }
+    serverActions: {}
+  },
 }
 
-module.exports = nextConfig
+export default nextConfig

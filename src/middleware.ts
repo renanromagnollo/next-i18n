@@ -28,3 +28,7 @@ export function middleware(request: NextRequest) {
 
   return NextResponse.redirect(new URL(`/${detectedLocaleInBrowser}${pathname}`, request.url))
 }
+
+export const config = {
+  matcher: ['/((?!_next|favicon.ico).*)'],
+}
