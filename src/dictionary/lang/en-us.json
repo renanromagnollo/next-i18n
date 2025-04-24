@@ -2,9 +2,5 @@
   "home": {
     "title": "Welcome home!",
     "description": "This is a home website in English."
-  },
-  "about": {
-    "title": "Welcome about!",
-    "description": "This is a about website in English."
   }
 }

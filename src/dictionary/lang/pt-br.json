@@ -2,9 +2,5 @@
   "home": {
     "title": "Bem-vindo a página inicial!",
     "description": "Este é um site em português."
-  },
-  "about": {
-    "title": "Bem vindo a página Sobre!",
-    "description": "Esta é a página Sobre."
   }
 }
