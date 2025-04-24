@@ -11,20 +11,20 @@ export async function generateStaticParams() {
 }
 
 // Layout principal para cada localidade
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
+export default async function LocaleLayout(props: {
   children: React.ReactNode
-  params: { locale: Locale }
+  params: Promise<{ locale: Locale }>
 }) {
-  // Esperando o dicionário carregar de acordo com a localidade
-  const dictionary = await getDictionary(params.locale)
+
+  const { children, params } = props
+  const { locale } = await params
 
   // Caso a localidade não seja suportada, mostra erro 404
-  if (!i18n.locales.includes(params.locale)) {
+  if (!i18n.locales.includes(locale)) {
     notFound()
   }
+  // Esperando o dicionário carregar de acordo com a localidade
+  const dictionary = await getDictionary(locale)
 
   return (
     <TranslationProvider dictionary={dictionary}>
